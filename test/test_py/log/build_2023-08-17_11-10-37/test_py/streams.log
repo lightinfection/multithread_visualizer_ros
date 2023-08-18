@@ -1,0 +1,40 @@
+[0.458s] Invoking command in '/home/lscm/Desktop/test/test_py': PYTHONPATH=/home/lscm/Desktop/test/test_py/build/test_py/prefix_override:/home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/test_py build --build-base /home/lscm/Desktop/test/test_py/build/test_py/build install --record /home/lscm/Desktop/test/test_py/build/test_py/install.log --single-version-externally-managed
+[0.592s] running egg_info
+[0.600s] writing build/test_py/test_py.egg-info/PKG-INFO
+[0.600s] writing dependency_links to build/test_py/test_py.egg-info/dependency_links.txt
+[0.600s] writing entry points to build/test_py/test_py.egg-info/entry_points.txt
+[0.600s] writing requirements to build/test_py/test_py.egg-info/requires.txt
+[0.600s] writing top-level names to build/test_py/test_py.egg-info/top_level.txt
+[0.619s] reading manifest file 'build/test_py/test_py.egg-info/SOURCES.txt'
+[0.620s] writing manifest file 'build/test_py/test_py.egg-info/SOURCES.txt'
+[0.620s] running build
+[0.620s] running build_py
+[0.620s] copying test_py/im.py -> /home/lscm/Desktop/test/test_py/build/test_py/build/lib/test_py
+[0.620s] copying test_py/test.py -> /home/lscm/Desktop/test/test_py/build/test_py/build/lib/test_py
+[0.621s] running install
+[0.621s] /home/lscm/.local/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[0.621s] !!
+[0.621s] 
+[0.621s]         ********************************************************************************
+[0.621s]         Please avoid running ``setup.py`` directly.
+[0.621s]         Instead, use pypa/build, pypa/installer or other
+[0.621s]         standards-based tools.
+[0.621s] 
+[0.621s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[0.622s]         ********************************************************************************
+[0.622s] 
+[0.622s] !!
+[0.622s]   self.initialize_options()
+[0.625s] running install_lib
+[0.634s] copying /home/lscm/Desktop/test/test_py/build/test_py/build/lib/test_py/im.py -> /home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages/test_py
+[0.634s] copying /home/lscm/Desktop/test/test_py/build/test_py/build/lib/test_py/test.py -> /home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages/test_py
+[0.634s] byte-compiling /home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages/test_py/im.py to im.cpython-310.pyc
+[0.634s] byte-compiling /home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages/test_py/test.py to test.cpython-310.pyc
+[0.635s] running install_data
+[0.643s] running install_egg_info
+[0.651s] removing '/home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages/test_py-0.0.0-py3.10.egg-info' (and everything under it)
+[0.651s] Copying build/test_py/test_py.egg-info to /home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages/test_py-0.0.0-py3.10.egg-info
+[0.652s] running install_scripts
+[0.744s] Installing pcl_pub script to /home/lscm/Desktop/test/test_py/install/test_py/lib/test_py
+[0.744s] writing list of installed files to '/home/lscm/Desktop/test/test_py/build/test_py/install.log'
+[0.764s] Invoked command in '/home/lscm/Desktop/test/test_py' returned '0': PYTHONPATH=/home/lscm/Desktop/test/test_py/build/test_py/prefix_override:/home/lscm/Desktop/test/test_py/install/test_py/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/test_py build --build-base /home/lscm/Desktop/test/test_py/build/test_py/build install --record /home/lscm/Desktop/test/test_py/build/test_py/install.log --single-version-externally-managed

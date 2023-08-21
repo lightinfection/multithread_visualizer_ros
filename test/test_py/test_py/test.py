@@ -18,36 +18,37 @@ class node1(Node):
         self.temp = None
 
     def _put(self):
-        timer = InstrumentationTimer()
-        while self.count<=5 and rclpy.ok():
+        while self.count<=20 and rclpy.ok():
             t1 = time.time()
             time.sleep(1)
+            timer = InstrumentationTimer()
             self.lock.acquire()
             if self.buf.full():
+                timer.stop()
                 return
             self.buf.put_nowait(self.count)
             self.count += 1
             print("[ ",threading.get_ident()," ] after putting ", self.buf.qsize())
             self.lock.notify()
             self.lock.release()
+            timer.stop()
             print("t1 running time, ", time.time()-t1)
-        timer.stop()
 
     def _print(self):
-        timer = InstrumentationTimer()
-        while self.count<=5 and rclpy.ok():
+        while self.count<=20 and rclpy.ok():
             r = std_msgs.msg.String()
             t2 = time.time()
-            # if(not self.buf.empty()):
+            timer = InstrumentationTimer()
             self.lock.acquire()
             self.lock.wait()
+            # if(not self.buf.empty()):
             x = self.buf.get_nowait()
             print("[ ",threading.get_ident()," ]", x)
-            self.lock.release()
             r.data = "now count is " + str(x)
             self.pub.publish(r)
+            self.lock.release()
+            timer.stop()
             print("t2 running time, ", time.time()-t2)
-        timer.stop()
 
 def ctrlc_handler(signum, frame):
     global shut_down

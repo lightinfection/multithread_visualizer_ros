@@ -25,11 +25,11 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(test src/test.cpp)
-ament_target_dependencies(test rclcpp std_msgs)
+add_executable(test_cpp src/test_cpp.cpp)
+ament_target_dependencies(test_cpp rclcpp std_msgs)
 
 install(TARGETS
-  test
+  test_cpp
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

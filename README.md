@@ -6,7 +6,7 @@ Both the test_cpp and the test_py are simple ros2 nodes achieving a simple produ
 
 ### Benchmark (Instrumentor)
 
-Benchmark can generate json configurations for visualizing multithreads in ros with the help of chrome://tracing. The idea comes from [The Cherno](https://www.youtube.com/watch?v=xlAH4dbMVnU&t=406s), a very famous youtuber teaching cpp. His cpp source code is converted into a python version in this respository.
+Benchmark can generate json configurations for visualizing multithreads in ros with the help of chrome://tracing. The idea comes from [The Cherno](https://www.youtube.com/watch?v=xlAH4dbMVnU&t=406s). His cpp source code is converted into a python version in this respository.
 
 It can convenient to use the tool by easily including or importing the source script and then declaring timers on suitable lines. Definitely, it's not necessary to use it with ros.
 

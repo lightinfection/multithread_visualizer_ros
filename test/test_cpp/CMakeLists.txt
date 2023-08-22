@@ -28,8 +28,10 @@ endif()
 add_executable(test_cpp src/test_cpp.cpp)
 ament_target_dependencies(test_cpp rclcpp std_msgs)
 
+include_directories(include ${colcon_INCLUDE_DIRS})
+
 install(TARGETS
-  test_cpp
-  DESTINATION lib/${PROJECT_NAME})
+test_cpp
+DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

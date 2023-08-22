@@ -1,2 +1,0 @@
-[console_scripts]
-pcl_pub = test_py.test:main

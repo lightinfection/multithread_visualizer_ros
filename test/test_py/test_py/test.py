@@ -20,11 +20,11 @@ class node1(Node):
     def _put(self):
         while self.count<=20 and rclpy.ok():
             t1 = time.time()
-            time.sleep(1)
             timer = InstrumentationTimer()
             self.lock.acquire()
             if self.buf.full():
                 timer.stop()
+                print("full already")
                 return
             self.buf.put_nowait(self.count)
             self.count += 1
@@ -33,19 +33,22 @@ class node1(Node):
             self.lock.release()
             timer.stop()
             print("t1 running time, ", time.time()-t1)
+            time.sleep(1)
 
     def _print(self):
         while self.count<=20 and rclpy.ok():
-            r = std_msgs.msg.String()
             t2 = time.time()
-            timer = InstrumentationTimer()
             self.lock.acquire()
-            self.lock.wait()
-            # if(not self.buf.empty()):
-            x = self.buf.get_nowait()
-            print("[ ",threading.get_ident()," ]", x)
-            r.data = "now count is " + str(x)
-            self.pub.publish(r)
+            timer = InstrumentationTimer()
+            r = std_msgs.msg.String()
+            while True:
+                if(not self.buf.empty()):
+                    x = self.buf.get_nowait()
+                    print("[ ",threading.get_ident()," ]", x)
+                    r.data = "now count is " + str(x)
+                    self.pub.publish(r)
+                    break
+                self.lock.wait()
             self.lock.release()
             timer.stop()
             print("t2 running time, ", time.time()-t2)
@@ -72,8 +75,7 @@ def main():
     publisher._print()
     # rclpy.spin(publisher)
     t1.join()
-    # print(publisher.temp.Start, publisher.temp.End, publisher.temp.ThreadID)
-    # print(result2.Start, result2.End, result2.ThreadID)
+
     rclpy.shutdown()
     timer.stop()
     vis.EndSession()

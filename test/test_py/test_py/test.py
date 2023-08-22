@@ -10,12 +10,20 @@ from .benchmark import *
 class node1(Node):
     def __init__(self):
         super().__init__("trytry")
+        timer = InstrumentationTimer()
         self.pub = self.create_publisher(std_msgs.msg.String, "testpub", 10)
         # self.timer = self.create_timer(1, self._print)
         self.count = 0
         self.buf = queue.Queue(10)
         self.lock = threading.Condition()
         self.temp = None
+        t1 = threading.Thread(target=self._put)
+        t2 = threading.Thread(target=self._print)
+        t1.start()
+        t2.start()
+        t1.join()
+        t2.join()
+        timer.stop()
 
     def _put(self):
         while self.count<=20 and rclpy.ok():
@@ -67,17 +75,9 @@ def main():
 
     vis = Instrumentor()
     vis.BeginSession()
-    timer = InstrumentationTimer()
     rclpy.init()
     publisher = node1()
-    t1 = threading.Thread(target=publisher._put)
-    t1.start()
-    publisher._print()
-    # rclpy.spin(publisher)
-    t1.join()
-
     rclpy.shutdown()
-    timer.stop()
     vis.EndSession()
     
 if __name__ == "__main__":
